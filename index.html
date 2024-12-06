@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Undangan Pernikahan</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #8b4513, #d2b48c);
+        color: white;
+        text-align: center;
+      }
+      .container {
+        padding: 20px;
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.8);
+        color: #8b4513;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px auto;
+        width: 90%;
+        max-width: 500px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .header {
+        font-size: 28px;
+        font-weight: bold;
+      }
+      .details {
+        margin-top: 10px;
+        font-size: 18px;
+      }
+      .form-group {
+        margin: 15px 0;
+        text-align: left;
+      }
+      .form-group input,
+      .form-group button {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 5px;
+        border: 1px solid #8b4513;
+      }
+      button {
+        background: #8b4513;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      footer {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #8b4513;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="header">Undangan Pernikahan</div>
+        <div class="details">
+          <p><strong>Sintia & Agus</strong></p>
+          <p>12 Agustus 2025</p>
+          <p>Gedung Melati Putih</p>
+          <p>09.00 WIB - 13.00 WIB</p>
+          <p>No Rekening: BCA 734538907 (a.n Sintia)</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Konfirmasi Kehadiran</h3>
+        <form id="attendanceForm">
+          <div class="form-group">
+            <label for="name">Nama</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Masukkan Nama Anda"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="attendance">Kehadiran</label>
+            <input
+              type="text"
+              id="attendance"
+              name="attendance"
+              placeholder="Ya/Tidak"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <button type="submit">Kirim</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <footer>© 2025 Sintia & Agus</footer>
+
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbzh7WvF3gSmcuElRo46lisPkJvXrGNzp3xsmmXj1FqXDlN9wIaOMVqUiMP9CqfKJWhorA/exec";
+      const form = document.getElementById("attendanceForm");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => alert("Konfirmasi kehadiran berhasil dikirim!"))
+          .catch((error) => alert("Gagal mengirim, coba lagi."));
+      });
+    </script>
+  </body>
+</html>
